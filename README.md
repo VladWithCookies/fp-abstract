@@ -48,7 +48,7 @@ Recursion is a programming pattern that is useful in situations when a task can 
 When a function solves a task, in the process it can call many other functions. A partial case of this is when a function calls itself. That’s called recursion.
 
 ```js
-// TODO
+const pow = (x, n) => n === 1 ? x : x * pow(x, n - 1);
 ```
 
 ## Higher-ordered Functions
@@ -84,14 +84,15 @@ The process of converting a function that takes multiple arguments into a functi
 Each time the function is called it only accepts one argument and returns a function that takes one argument until all arguments are passed.
 
 ```js
-// TODO
+import { curry } from 'ramda';
+
+const sum = (a, b, c) => a + b + c;
+const curriedSum = curry(sum);
+
+console.log(curriedSum(1)(2)(3)); // Prints: 6
 ```
 
 ## Closures
 A closure is a way of accessing a variable outside its scope. Formally, a closure is a technique for implementing lexically scoped named binding. It is a way of storing a function with an environment.
 
 A closure is a scope which captures local variables of a function for access even after the execution has moved out of the block in which it is defined. ie. they allow referencing a scope after the block in which the variables were declared has finished executing.
-
-```js
-// TODO
-```
