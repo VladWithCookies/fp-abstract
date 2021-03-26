@@ -7,6 +7,7 @@
 * [Curring](#curring)
 * [Closures](#closures)
 * [Functor](#functor)
+* [Monad](#monad)
 
 ## Pure functions
 A pure function must satisfy both of the following properties:
@@ -126,4 +127,9 @@ class Maybe {
 ```
 
 ## Monad
-TODO
+Monad is a functor that can be flatten with `join` method.
+```
+Maybe.prototype.join = function join() {
+  return this.isNothing() ? Maybe.of(null) : this.$value;
+};
+```
