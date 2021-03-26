@@ -128,7 +128,7 @@ class Maybe {
 
 ## Monad
 Monad is a functor that can be flatten with `join` method.
-```
+```js
 Maybe.prototype.join = function join() {
   return this.isNothing() ? Maybe.of(null) : this.$value;
 };
