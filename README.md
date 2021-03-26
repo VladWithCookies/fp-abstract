@@ -99,4 +99,28 @@ A closure is a way of accessing a variable outside its scope. Formally, a closur
 A closure is a scope which captures local variables of a function for access even after the execution has moved out of the block in which it is defined. ie. they allow referencing a scope after the block in which the variables were declared has finished executing.
 
 ## Functor
-TODO
+Functor is a class which can store value of any type and implements `map` method. In this way we can use it in function composition.
+
+```js
+class Maybe {
+  static of(x) {
+    return new Maybe(x);
+  }
+
+  get isNothing() {
+    return this.$value === null || this.$value === undefined;
+  }
+
+  constructor(x) {
+    this.$value = x;
+  }
+
+  map(fn) {
+    return this.isNothing ? this : Maybe.of(fn(this.$value));
+  }
+
+  inspect() {
+    return this.isNothing ? 'Nothing' : `Just(${inspect(this.$value)})`;
+  }
+}
+```
