@@ -8,6 +8,7 @@
 * [Closures](#closures)
 * [Functor](#functor)
 * [Monad](#monad)
+* [Applicative Functor](#applicative-functor)
 
 ## Pure functions
 A pure function must satisfy both of the following properties:
@@ -131,5 +132,13 @@ Monad is a functor that can be flatten with `join` method.
 ```js
 Maybe.prototype.join = function join() {
   return this.isNothing() ? Maybe.of(null) : this.$value;
+};
+```
+
+## Applicative Functor
+Applicative functor is functor which has `ap` function which allow to apply function from one functor to value from another functor
+```js
+Container.prototype.ap = function (otherContainer) {
+  return otherContainer.map(this.$value);
 };
 ```
